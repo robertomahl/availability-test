@@ -23,6 +23,8 @@ public class AuthServiceImpl implements AuthService {
 
         User user = UserMapper.INSTANCE.fromRegisterRequest(request, passwordEncoder.encode(request.password()));
 
+        user.setFirstName("2 - " + user.getFirstName());
+
         return UserMapper.INSTANCE.toRegisterResponse(userRepository.save(user));
     }
 
